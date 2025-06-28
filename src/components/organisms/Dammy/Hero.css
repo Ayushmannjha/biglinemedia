@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  background: #111;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+#wrapper,
+#content {
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 100%;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 2.5px;
+  height: 100%;
+  background: #111;
+  z-index: 10;
+  top: 0;
+}
+
+.hero-img,
+.swipe {
+  position: absolute;
+  width: 700%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.swipe {
+  background: #741313;
+  width: 100%;
+  z-index: 2;
+}
