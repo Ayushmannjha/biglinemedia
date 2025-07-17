@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import CityCard from '../../components/molecules/CityCard';
 
 import RotatingTagline from '../atom/RotatingTagline';
-import  { attractions } from '../../assets/data/CityHighlights.js';
+import  { attractions } from '../../assets/data/home/CityHighlights.js';
 import { taglines } from '../../assets/data/Taglines';
 
 

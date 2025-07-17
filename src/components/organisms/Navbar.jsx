@@ -56,11 +56,11 @@ function Navbar() {
         <div className="flex items-center justify-around fill-available lg:w-auto px-4 py-2">
           <div >
             
-              <img src={logo} alt="Logo" className="h-25 w-41   mr-61    pr-5" />
+              <img src={logo} alt="Logo" className="h-13 w-62   mr-66    pr-0" />
             
           </div>
           {/* Mobile Toggle */}
-          <div className="lg:hidden">
+          <div className="lg:hidden">                                                                                                                                                                                                                                                                 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`p-2 rounded m-6 ${scrolled ? "text-gray-700 border border-gray-300" : "text-white border border-white"}`}

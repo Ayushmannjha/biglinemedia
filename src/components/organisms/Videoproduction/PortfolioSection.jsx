@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import Modal from './Modal'; // Import the new Modal component
 import { containerVariants, cardVariants, pulseVariants } from '../../../utils/framerVariants';
+import image1 from "../../../assets/images/image1.png"
 
 // Dummy data for portfolio items (same as before)
 const portfolioItems = [
     {
         title: "Startup Explainer: InnovateApp",
         description: "A concise animated explainer that simplified a complex SaaS product for early adopters.",
-        image: "https://placehold.co/800x450/a78bfa/ffffff?text=InnovateApp+Explainer", // Larger image for modal
+        image: image1, // Larger image for modal
         videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example YouTube embed URL
         impact: "Increased user sign-ups by 20% in the first month.",
         color: "from-purple-500 to-pink-500"
@@ -19,7 +20,7 @@ const portfolioItems = [
         title: "Local Business Promo: The Daily Crumb",
         description: "A vibrant social media reel showcasing a local bakery's unique atmosphere and offerings.",
         image: "https://placehold.co/800x450/fca5a5/ffffff?text=Daily+Crumb+Promo",
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoEmbedUrl: "https://www.instagram.com/reel/DL5HNaQsWVC",
         impact: "Generated a 15% increase in local foot traffic.",
         color: "from-orange-500 to-red-500"
     },
@@ -69,7 +70,7 @@ const PortfolioSection = React.forwardRef((props, ref) => {
     };
 
     return (
-        <section id="portfolio" ref={ref} className="py-20 relative bg-gray-50 text-gray-800">
+        <section id="portfolio" ref={ref} className="py-20 relative bg-gradient-to-r from-blue-500 to-purple-500 text-gray-800">
             <div className="container mx-auto px-6">
                 <motion.div
                     className="text-center mb-16"
@@ -120,7 +121,7 @@ const PortfolioSection = React.forwardRef((props, ref) => {
                                     alt={item.title}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300">
+                                <div className="absolute inset-0 flex items-center justify-center  bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300">
                                     <motion.div
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
@@ -153,35 +154,38 @@ const PortfolioSection = React.forwardRef((props, ref) => {
                     ))}
                 </motion.div>
 
-                <motion.button
-                    className="mt-16 bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-full text-lg font-semibold text-white shadow-lg"
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                >
-                    View All Projects
-                </motion.button>
+                
             </div>
 
             {/* Portfolio Detail Modal */}
-            <Modal isOpen={!!selectedProject} onClose={closeModal}>
+            <Modal
+                isOpen={!!selectedProject}
+                onClose={closeModal}
+                videoEmbedUrl={selectedProject?.videoEmbedUrl}  // Pass videoEmbedUrl here
+            >
                 {selectedProject && (
                     <>
                         <div className="md:w-1/2 flex-shrink-0">
                             {/* Conditionally render video embed or image */}
-                            {selectedProject.videoEmbedUrl ? (
-                                <div className="relative w-full" style={{paddingTop: '56.25%'}}>
+                            {selectedProject.videoEmbedUrl?.includes("instagram.com") ? (
+                                <div className="w-full rounded-lg overflow-hidden">
+                                    <blockquote
+                                        className="instagram-media"
+                                        data-instgrm-permalink={selectedProject.videoEmbedUrl}
+                                        data-instgrm-version="14"
+                                        style={{ width: '100%', maxWidth: '540px', margin: '0 auto' }}
+                                    />
+                                </div>
+                            ) : selectedProject.videoEmbedUrl ? (
+                                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
                                     <iframe
-                                        className="absolute inset-0 w-full h-full rounded-lg"
+                                        className="absolute inset-0 w-full h-full rounded-lg border-none"
                                         src={selectedProject.videoEmbedUrl}
-                                        frameBorder="0"
+                                        title={selectedProject.title}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
-                                        title={selectedProject.title}
-                                    ></iframe>
+                                        loading="lazy"
+                                    />
                                 </div>
                             ) : (
                                 <img
@@ -210,6 +214,7 @@ const PortfolioSection = React.forwardRef((props, ref) => {
                     </>
                 )}
             </Modal>
+
         </section>
     );
 });

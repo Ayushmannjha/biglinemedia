@@ -1,7 +1,6 @@
 // src/VideoProductionWebsite.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react'; // Only import what's used here
 
 // Import all sub-components
 import HeroSection from '../../../organisms/Videoproduction/HeroSection'

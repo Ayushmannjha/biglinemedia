@@ -1,12 +1,19 @@
-// src/components/Modal.jsx
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
-const Modal = ({ isOpen, onClose, children, titleId = 'modal-title', descriptionId = 'modal-description' }) => {
+const Modal = ({
+    isOpen,
+    onClose,
+    children,
+    videoEmbedUrl, // Add videoEmbedUrl prop here
+    titleId = 'modal-title',
+    descriptionId = 'modal-description',
+}) => {
     const modalRef = useRef(null);
 
     // Effect to handle focus trapping and escape key
+    // Handle keyboard focus & escape key
     useEffect(() => {
         if (!isOpen) return;
 
@@ -22,17 +29,16 @@ const Modal = ({ isOpen, onClose, children, titleId = 'modal-title', description
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
 
-        // Focus the first focusable element when modal opens
         firstElement && firstElement.focus();
 
         const handleTabKey = (event) => {
             if (event.key === 'Tab') {
-                if (event.shiftKey) { // Shift + Tab
+                if (event.shiftKey) {
                     if (document.activeElement === firstElement) {
                         lastElement.focus();
                         event.preventDefault();
                     }
-                } else { // Tab
+                } else {
                     if (document.activeElement === lastElement) {
                         firstElement.focus();
                         event.preventDefault();
@@ -50,12 +56,59 @@ const Modal = ({ isOpen, onClose, children, titleId = 'modal-title', description
         };
     }, [isOpen, onClose]);
 
+    // Load Instagram embed script if needed
+    useEffect(() => {
+        if (isOpen && videoEmbedUrl?.includes('instagram.com')) {
+            if (!window.instgrm) {
+                const script = document.createElement('script');
+                script.src = 'https://www.instagram.com/embed.js';
+                script.async = true;
+                script.onload = () => {
+                    window.instgrm?.Embeds?.process();
+                };
+                document.body.appendChild(script);
+            } else {
+                window.instgrm?.Embeds?.process();
+            }
+        }
+    }, [isOpen, videoEmbedUrl]);
+
+    // 🚫 Lock background scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
+
+    // Effect to load Instagram embed script if needed
+    useEffect(() => {
+        if (isOpen && videoEmbedUrl?.includes('instagram.com')) {
+            if (!window.instgrm) {
+                const script = document.createElement('script');
+                script.src = 'https://www.instagram.com/embed.js';
+                script.async = true;
+                script.onload = () => {
+                    window.instgrm?.Embeds?.process();
+                };
+                document.body.appendChild(script);
+            } else {
+                window.instgrm?.Embeds?.process();
+            }
+        }
+    }, [isOpen, videoEmbedUrl]);
+
     if (!isOpen) return null;
 
     return (
         <AnimatePresence>
             <motion.div
-                className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 overflow-y-auto"
+                className="fixed inset-0 bg-transparent bg-opacity-75 flex items-center justify-center p-4 z-50 overflow-y-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -67,7 +120,7 @@ const Modal = ({ isOpen, onClose, children, titleId = 'modal-title', description
                     initial={{ scale: 0.8, opacity: 0, y: 50 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.8, opacity: 0, y: 50 }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                    transition={{ type: 'spring', stiffness: 100, damping: 15 }}
                     onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
                     role="dialog"
                     aria-modal="true"
