@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image1 from "../../../assets/images/image1.png";
+import image1 from "../../../assets/images/OURHAND.png";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -56,7 +56,7 @@ const AboutHeader = () => {
           >
             At{" "}
             <strong className="text-indigo-600">
-              [Your Company Name]
+              BIGLINEMEDIA
             </strong>
             , we don't just manage, we elevate. Discover how our specialized
             expertise drives measurable results.

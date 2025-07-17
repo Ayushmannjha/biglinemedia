@@ -95,16 +95,7 @@ const SuccessStoryCard = ({
             </div>
           )}
           
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white font-semibold py-3 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
-          >
-            <span>Learn More</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </motion.button>
+          
         </div>
       </div>
     </motion.div>

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ServiceCard from '../molecules/ServiceCard';
-import {
-  DollarSign, Bus, GraduationCap, Leaf, Landmark, 
-  ArrowRight, Sparkles, Eye, Star, ChevronRight
-} from 'lucide-react';
-import { services } from '../../assets/data/ServicesGrid'; // Assuming you have a data file for services
+import { ArrowRight, Sparkles, Eye,} from 'lucide-react';
+import { services } from '../../assets/data/home/ServicesGrid'; // Assuming you have a data file for services
+import {Link} from "react-router-dom";
 
 // Mock image for demo
 
@@ -63,7 +61,7 @@ const ServicesGrid = () => {
         >
           <Sparkles className="w-6 h-6 text-blue-500" />
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Municipal Services
+            TECH  Services
           </h2>
           <Sparkles className="w-6 h-6 text-purple-500" />
         </motion.div>
@@ -176,14 +174,16 @@ const ServicesGrid = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <motion.button 
-                    className={`flex-1 px-4 py-3 rounded-xl bg-gradient-to-r ${selectedCard.color} text-white font-medium shadow-lg flex items-center justify-center gap-2`}
-                    whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.button>
+                <Link to={selectedCard.link} className="flex-1">
+                    <motion.button 
+                      className={`w-full px-4 py-3 rounded-xl bg-gradient-to-r ${selectedCard.color} text-white font-medium shadow-lg flex items-center justify-center gap-2`}
+                      whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
                   
                   <motion.button 
                     className="px-4 py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"

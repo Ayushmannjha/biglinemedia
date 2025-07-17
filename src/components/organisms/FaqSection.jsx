@@ -1,7 +1,7 @@
 // sections/FaqSection.jsx
 import React from 'react';
 import FaqItem from '../molecules/FaqItem';       
-import { faqs } from '../../assets/data/FaqSection'; // Assuming you have a data file for FAQs
+import { faqs } from '../../assets/data/home/FaqSection'; // Assuming you have a data file for FAQs
 
 
 

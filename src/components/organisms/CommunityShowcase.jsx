@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ImageSwiperCard from "../molecules/ImageCard";
-import { photos } from "../../assets/data/CommunityShowcase";
+import { photos } from "../../assets/data/home/CommunityShowcase";
 import React from "react";
 
 //

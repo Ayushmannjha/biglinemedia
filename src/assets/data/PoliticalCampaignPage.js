@@ -34,7 +34,7 @@
          title: "डेटा विश्लेषण / Data Analytics", // Changed
          desc: "मतदाता रुझानों और जनसांख्यिकी को समझना", // Changed
         credential: "Advanced Predictive Models", // Changed
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop"
+        image: ""
       },
       {
          icon: "📣", // Changed

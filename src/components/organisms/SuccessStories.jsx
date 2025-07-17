@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SuccessStoryCard from '../molecules/SuccessStoryCard';
-import { successStoriesData } from '../../assets/data/successStories';
+import { successStoriesData } from '../../assets/data/home/successStories';
 
 const SuccessStories = () => {
   const [filter, setFilter] = useState('all');
   const [stories, setStories] = useState(successStoriesData);
 
-  const categories = ['all', 'Digital Government', 'Smart City', 'Public Safety', 'Transportation'];
+  const categories = ['all', 'Election Campaign', 'Social Media Management', 'Web Development', 'Video Production'];
 
   const filteredStories = filter === 'all' 
     ? stories 
@@ -64,7 +64,7 @@ const SuccessStories = () => {
               key={story.id}
               story={story}
               index={index}
-              onLearnMore={handleLearnMore}
+            
             />
           ))}
         </div>

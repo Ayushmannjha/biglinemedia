@@ -1,5 +1,5 @@
 // components/Footer.jsx
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="bg-blue-500 text-white p-2 rounded-md">
               🏠
             </div>
-            <h2 className="text-xl font-bold">Municipal</h2>
+            <h2 className="text-xl font-bold">  BIGLINEMEDIA</h2>
           </div>
           <p className="text-sm text-gray-300">
             Here, you’ll find comprehensive information about our town’s services, events, local government, and resources available to residents and visitors alike.
@@ -47,15 +47,19 @@ const Footer = () => {
         </div>
 
         {/* More Info */}
-        <div>
-          <h3 className="font-semibold mb-4">More Info</h3>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-blue-300">About Us</a></li>
-            <li><a href="#" className="hover:text-blue-300">Departments</a></li>
-            <li><a href="#" className="hover:text-blue-300">Services</a></li>
-            <li><a href="#" className="hover:text-blue-300">News</a></li>
-          </ul>
-        </div>
+
+
+// ... inside your component
+
+<div>
+  <h3 className="font-semibold mb-4">More Info</h3>
+  <ul className="space-y-2 text-sm">
+    <li><Link to="/about" className="hover:text-blue-300">About Us</Link></li>
+    <li><Link to="/departments" className="hover:text-blue-300">Departments</Link></li>
+    <li><Link to="/services" className="hover:text-blue-300">Services</Link></li>
+    <li><Link to="/news" className="hover:text-blue-300">News</Link></li>
+  </ul>
+</div>
 
         {/* Quick Contact */}
         <div>

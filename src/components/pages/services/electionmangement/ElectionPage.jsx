@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import TrustBadge from '../../../atom/electionmangement/TrustBadge';
 import CampaignCard from '../../../atom/electionmangement/CampaignCard';
 import IndianSection from '../../../atom/electionmangement/IndianSection';
@@ -7,8 +7,11 @@ import CampaignFeatureCard from '../../../atom/electionmangement/CampaignFeature
 import StatCounter from '../../../atom/electionmangement/StatCounter';
 import TestimonialSlider from '../../../atom/electionmangement/TestimonialSlider';
 import CredibilityBanner from '../../../atom/electionmangement/CredibilityBanner';
-import  {config }from '../../../../assets/data/PoliticalCampaignPage';
+import { config } from '../../../../assets/data/PoliticalCampaignPage';
 import { PoliticalPage } from '../../../../assets/data/PoliticalPageAnimations';
+import ServiceButton from '../../../organisms/contact/ServiceButton';
+import { services, serviceConfigs } from "../../../../assets/data/contact/Contacts.js";
+import ContactFormsSection from '../../../organisms/contact/ContactFormsSection';
 // Indian-themed Animation Variants (remain mostly the same, as they're stylistic)
 
 
@@ -21,12 +24,16 @@ import { PoliticalPage } from '../../../../assets/data/PoliticalPageAnimations';
 
 
 const PoliticalCampaignPage = () => {
-  
+  const [activeService, setActiveService] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const selectedService = services.find(service => service.id === 'election-campaigning');
+                                                                                 
+
 
   return (
     <div className="bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-800 min-h-screen relative overflow-hidden">
       {/* Credibility Banner */}
-      <CredibilityBanner />
+     
       {/* Decorative Ashoka Chakra */}
       <motion.div
         className="fixed top-20 right-10 text-6xl opacity-5 pointer-events-none z-0"
@@ -37,7 +44,7 @@ const PoliticalCampaignPage = () => {
       </motion.div>
       {/* Hero Section */}
       <motion.div
-         className="relative py-20 px-6 text-center min-h-screen flex items-center justify-center"
+        className="relative py-20 px-6 text-center min-h-screen flex items-center justify-center"
         style={{
           backgroundImage: `linear-gradient(rgba(255,153,51,0.1), rgba(0,0,0,0.3)), url(${config.hero.backgroundImage})`,
           backgroundSize: 'cover',
@@ -48,61 +55,70 @@ const PoliticalCampaignPage = () => {
         transition={{ duration: 1.5 }}
       >
         <motion.div
-           className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto"
           variants={PoliticalPage.parliamentWave}
           initial="initial"
           animate="animate"
         >
           <motion.h1
-             className="text-5xl font-bold mb-4 text-orange-800"
+            className="text-5xl font-bold mb-4 text-orange-800"
             variants={PoliticalPage.slideInFromTricolor}
           >
             {config.hero.title}
           </motion.h1>
           <motion.h2
-             className="text-3xl font-semibold mb-6 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"
+            className="text-3xl font-semibold mb-6 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"
             variants={PoliticalPage.slideInFromTricolor}
           >
             {config.hero.subtitle}
           </motion.h2>
           <motion.p
-             className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-700"
+            className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-700"
             variants={PoliticalPage.slideInFromTricolor}
           >
             {config.hero.description}
           </motion.p>
           {/* Trust Indicators */}
           <motion.div
-             className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto"
             variants={PoliticalPage.parliamentWave}
           >
             {config.trustIndicators.map((indicator, i) => (
               <TrustBadge key={i} {...indicator} delay={i * 0.2} />
             ))}
           </motion.div>
-          <motion.button
-            className="bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 text-white px-12 py-4 rounded-full font-bold text-lg shadow-2xl"
-            variants={PoliticalPage.lotusBloom}
-            whileHover={{
-               scale: 1.1,
-              boxShadow: "0 25px 50px rgba(0,0,0,0.2)"
+          <ServiceButton
+            key={selectedService.id}
+            title={config.hero.ctaLabel}
+            isActive={activeService === selectedService.id}
+
+            onClick={() => {
+              setActiveService(selectedService.id);
+              setShowForm(true); // Show the form popup
             }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {config.hero.ctaLabel}
-          </motion.button>
+            gradient="bg-gradient-to-r from-orange-600 via-blue-600 to-green-600"
+          />
+          {showForm && (
+  <ContactFormsSection
+    activeService={activeService}
+    serviceConfigs={serviceConfigs}
+    onCloseForm={() => setShowForm(false)} // ✅ Passed to ContactForm eventually
+  />
+)}
+
+
         </motion.div>
       </motion.div>
       {/* Challenge Section */}
       <IndianSection title="आपकी चुनौतियाँ / Your Challenges" icon="🤔" backgroundPattern="ashoka">
         <motion.p
-           className="text-center mb-8 text-lg text-gray-600"
+          className="text-center mb-8 text-lg text-gray-600"
           variants={PoliticalPage.slideInFromTricolor}
         >
           भारत में एक सफल राजनीतिक अभियान चलाना जटिल हो सकता है। आप सोच रहे होंगे:
         </motion.p>
         <motion.div
-           className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
           variants={PoliticalPage.parliamentWave}
         >
           {config.problems.map((item, i) => (
@@ -120,7 +136,7 @@ const PoliticalCampaignPage = () => {
       {/* Solution Section */}
       <IndianSection title="हमारा समाधान / Our Solution" icon="✅" backgroundPattern="parliament">
         <motion.div
-           className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-200"
+          className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-200"
           variants={PoliticalPage.lotusBloom}
         >
           <div className="overflow-x-auto">
@@ -179,7 +195,7 @@ const PoliticalCampaignPage = () => {
       {/* Clients Section */}
       <IndianSection title="हमारे ग्राहक / Our Clients" icon="🤝" backgroundPattern="ashoka">
         <motion.div
-           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
           variants={PoliticalPage.parliamentWave}
         >
           {config.clients.map((client, i) => (
@@ -197,10 +213,10 @@ const PoliticalCampaignPage = () => {
         </motion.div>
         {/* Final CTA */}
         <motion.div
-           className="bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 p-10 rounded-2xl shadow-2xl text-center text-white border-4 border-yellow-400"
+          className="bg-gradient-to-r from-orange-600 via-blue-600 to-green-600 p-10 rounded-2xl shadow-2xl text-center text-white border-4 border-yellow-400"
           variants={PoliticalPage.lotusBloom}
           whileHover={{
-             scale: 1.02,
+            scale: 1.02,
             boxShadow: "0 30px 60px rgba(0,0,0,0.2)"
           }}
         >
@@ -213,7 +229,7 @@ const PoliticalCampaignPage = () => {
           <motion.button
             className="bg-white text-orange-600 px-12 py-4 rounded-full font-bold text-xl shadow-lg"
             whileHover={{
-               scale: 1.1,
+              scale: 1.1,
               boxShadow: "0 20px 40px rgba(255,255,255,0.3)"
             }}
             whileTap={{ scale: 0.95 }}

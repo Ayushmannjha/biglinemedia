@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  DollarSign, Bus, GraduationCap, Leaf, Landmark, 
-  ArrowRight, Sparkles, Eye, Star, ChevronRight
-} from 'lucide-react';
+import { Star, ChevronRight} from 'lucide-react';
 
 
 const ServiceCard = ({ service, isSelected, onClick }) => {
