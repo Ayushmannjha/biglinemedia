@@ -1,9 +1,50 @@
-/* src/app.css or src/index.css */
+/* ==========================================================================
+   File: src/app.css or src/index.css
+   Description: The complete, merged CSS for optimized font loading.
+   ========================================================================== */
 
 @import "tailwindcss";
 
+/* --- STEP 1: Define a Fallback Font --- */
+@font-face {
+  font-family: 'MontserratFallback';
+  src: local('Arial');
+  size-adjust: 95.5%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 10%;
+}
+
+/* --- STEP 2: Define the Self-Hosted Web Fonts --- */
+
+/* REGULAR (NON-ITALIC) FONT */
+/* Download this file: Montserrat-Regular.ttf */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900; /* Variable font weight range */
+  font-display: swap;
+  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+}
+
+/* ITALIC FONT */
+/* Download this file: Montserrat-Italic.ttf */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100 900; /* Variable font weight range */
+  font-display: swap;
+  src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype-variations');
+}
+
+
+/* --- STEP 3: Apply the Font Stack to the Body --- */
+body {
+  font-family: 'Montserrat', 'MontserratFallback', sans-serif;
+}
+
+/* --- Animation Properties and Keyframes --- */
 :root {
-  /* Define your animations as custom properties */
   --animate-fade-in-up: fadeInUp 1s ease-out forwards;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce-slow: bounce 3s infinite;
@@ -12,7 +53,6 @@
   --animate-slide-in-bottom: slideInBottom 1s ease-out forwards;
 }
 
-/* Define your keyframes globally */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }

@@ -1,13 +1,13 @@
 // src/assets/data/team/teamMembers.js
-import  Aashikant from "../../../assets/images/Aashikant.png"
-import  ceo from "../../../assets/images/Chandra vrat deo.png"
-import  Abhisek  from "../../../assets/images/Abhisek.png"
-import  Harsh from "../../../assets/images/Harsh.png"
+import  Aashikant from "../../../assets/images/Aashikant.webp"
+import  ceo from "../../../assets/images/Chandra vrat deo.webp"
+import  Abhisek  from "../../../assets/images/Abhisek.webp"
+import  Harsh from "../../../assets/images/Harsh.webp"
 export const teamMembers = [
   {
     id: 1,
     name: "Chandra vrat deo",
-    title: "Lead Campaign Strategist",
+    title: "Lead Campaign Strategist AND CEO",
     photo: ceo, // Using picsum.photos for reliability
     cardBg: "bg-gradient-to-br from-blue-400 to-teal-500",
     primarySpecializations: ["Election Strategy", "Digital Advertising"],

@@ -20,20 +20,7 @@ const VideoSection = ({
         />
       </div>
 
-      {/* Overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 h-full w-full bg-black/50">
-        {overlayTitle && (
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-amber-300 leading-tight">
-            {overlayTitle}
-          </h1>
-        )}
-        {overlaySubtitle && (
-          <p className="text-base sm:text-lg md:text-xl mb-6 max-w-xl text-amber-300 leading-relaxed">
-            {overlaySubtitle}
-          </p>
-        )}
-        {children}
-      </div>
+      
     </div>
   );
 };

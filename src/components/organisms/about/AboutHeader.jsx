@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image1 from "../../../assets/images/OURHAND.png";
+import image1 from "../../../assets/images/OURHAND.webp";
 
 const containerVariants = {
   hidden: { opacity: 0 },

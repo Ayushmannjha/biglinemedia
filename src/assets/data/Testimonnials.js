@@ -1,28 +1,30 @@
+ import image1 from "../../assets/images/reviewimg/principal_gj_college.jpg"
+  import image2 from "../../assets/images/reviewimg/RameshwarMahto.jpeg"
  export const testimonialData = [
   {
-    name: 'Sofia Martinez',
+    name: 'Prof. Dr. Bikash Krishna Singh',
     position: 'Community Leader',
-    organization: 'Metro City Residents Association',
-    quote: "The municipality center has been a tremendous resource for our family, providing us with access to essential services and community programs. We're grateful for the dedicated staff and their support.",
-    image: '/assets/images/image1.png',
+    organization: 'Principal In-Charge (Sri Gadadhar Acharya Janta College)',
+    quote: "I just had the most amazing experience with BiglineMedia! Their team really knows their stuff when it comes to web and app development. From day one, they impressed me with their creativity and professionalism.",
+    image: image1,
     rating: 5,
     gradient: 'from-emerald-500 to-teal-600'
   },
   {
-    name: 'Sara Richmond',
-    position: 'Environmental Advocate',
+    name: 'Anjali Verma',
+    position: 'Startup Founder',
     organization: 'Green Valley Initiative',
-    quote: "The dedication to environmental sustainability is commendable. The municipality's initiatives have made a noticeable difference in our community.",
+    quote: "Their communication was outstanding, and they delivered everything on time. I’m beyond satisfied with the results. Highly recommend them!.",
     image: '/assets/images/image1.png',
     rating: 5,
     gradient: 'from-blue-500 to-indigo-600'
   },
   {
-    name: 'James Thompson',
-    position: 'Business Owner',
-    organization: 'Downtown Business Council',
-    quote: "The digital transformation of municipal services has streamlined our permit processes and saved us countless hours. Exceptional work!",
-    image: '/assets/images/image1.png',
+    name: 'Tarkishor prasad',
+    position: 'Former Deputy Chief Minister of Bihar',
+    organization: 'Marketing Lead at AdWave',
+    quote: "Their strategies helped boost our brand’s online presence like never before. True professionals and a great experience overall.",
+    image: image2,
     rating: 5,
     gradient: 'from-purple-500 to-violet-600'
   }

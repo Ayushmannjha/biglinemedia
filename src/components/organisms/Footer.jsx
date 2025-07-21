@@ -1,97 +1,118 @@
-// components/Footer.jsx
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { Mail, MapPin, Phone, Rss, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
+  // Animation variants for Framer Motion
+  // We're keeping these for potential 'whileInView' effects if desired,
+  // but removing the 'initial="hidden"' from the main container
+  // to ensure content is immediately visible for LCP.
+  const footerVariants = {
+    hidden: { opacity: 0 }, // This variant is now only for when you explicitly want to hide something
+    visible: {
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 80,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <footer className="bg-[#0c136f] text-white pt-16 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 pb-12 border-b border-gray-500">
-        {/* Logo and Description */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="bg-blue-500 text-white p-2 rounded-md">
-              🏠
+    <div className="bg-[#0a1045] text-white pt-20 px-6 md:px-20  w-auto h-fit">
+      {/*
+        Removed initial="hidden" from here.
+        The content will now be immediately visible, contributing to a better LCP score.
+        You can still use whileInView="visible" for a "reveal" animation as the user scrolls.
+      */}
+      <motion.div
+        className="max-w-7xl mx-auto"
+        // initial="hidden" // Commented out to improve LCP
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={footerVariants}
+      >
+        {/* Top Section: Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-gray-700">
+          {/* Company Info */}
+          {/* Apply itemVariants' 'visible' directly or remove motion if LCP is paramount for this section */}
+          <motion.div variants={itemVariants} initial="visible"> {/* Set initial to 'visible' for immediate paint */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-blue-600 text-white p-2 rounded-md">
+                <Rss size={20} />
+              </div>
+              <h2 className="text-2xl  tracking-tight">BIGLINEMEDIA</h2>
             </div>
-            <h2 className="text-xl font-bold">  BIGLINEMEDIA</h2>
+            <div className="w-fit  h-max">
+              We are a full-service digital agency empowering political campaigns, brands, and businesses to achieve their goals through strategic communication and cutting-edge technology.
           </div>
-          <p className="text-sm text-gray-300">
-            Here, you’ll find comprehensive information about our town’s services, events, local government, and resources available to residents and visitors alike.
+          </motion.div>
+
+          {/* Our Services */}
+          <motion.div variants={itemVariants} initial="visible"> {/* Set initial to 'visible' */}
+            <h3 className="text-lg mb-4">Our Services</h3>
+            <ul className="space-y-3 text-sm">
+              <li><Link to="/election-campaigns" className="hover:text-blue-400 transition-colors duration-300">Election Campaigns</Link></li>
+              <li><Link to="/video-production" className="hover:text-blue-400 transition-colors duration-300">Video Production</Link></li>
+              <li><Link to="/web-development" className="hover:text-blue-400 transition-colors duration-300">Web Development</Link></li>
+              <li><Link to="/social-media" className="hover:text-blue-400 transition-colors duration-300">Social Media Management</Link></li>
+            </ul>
+          </motion.div>
+
+          {/* Quick Contact */}
+          <motion.div variants={itemVariants} initial="visible"> {/* Set initial to 'visible' */}
+            <h3 className=" text-lg mb-4">Quick Contact</h3>
+            <ul>
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="text-blue-400 mt-1" />
+                <span>789 Digital Avenue<br />Innovation City, CA 90210</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={16} className="text-blue-400" />
+                <span>+1 (555) 123-4567</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={16} className="text-blue-400" />
+                <span>contact@biglinemedia.com</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Newsletter */}
+          <motion.div variants={itemVariants} initial="visible"> {/* Set initial to 'visible' */}
+            <h3 className=" text-lg mb-4">Get Industry Insights</h3>
+            <p className="text-sm text-gray-400 mb-4">Subscribe to our newsletter for the latest trends in digital strategy and campaign management.</p>
+            
+          </motion.div>
+        </div>
+
+        {/* Bottom Section: Copyright and Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center py-6 text-sm">
+          <p className="text-gray-500 mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} BIGLINEMEDIA. All Rights Reserved.
           </p>
-        </div>
-
-        {/* Upcoming Events */}
-        <div>
-          <h3 className="font-semibold mb-4">Upcoming Events</h3>
-          <div className="mb-4 flex gap-3">
-            <div className="text-center bg-blue-600 text-white px-2 py-1 rounded">
-              <div className="text-xs">Dec</div>
-              <div className="text-lg font-bold">21</div>
-            </div>
-            <div className="text-sm">
-              <p className="font-bold">Farmers Market</p>
-              <p>6:30 pm - 10:00 pm</p>
-              <a href="#" className="text-blue-400 underline text-xs">Barselona IT Hall</a>
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <div className="text-center bg-blue-600 text-white px-2 py-1 rounded">
-              <div className="text-xs">Oct</div>
-              <div className="text-lg font-bold">15</div>
-            </div>
-            <div className="text-sm">
-              <p className="font-bold">Concert Series</p>
-              <p>5:30 pm - 9:00 pm</p>
-              <a href="#" className="text-blue-400 underline text-xs">Berlin, Bussines Street</a>
-            </div>
+          <div className="flex space-x-4 text-gray-400 hover:text-white transition-colors duration-300">
+            <a href="#"><FaTwitter size={20} /></a>
+            <a href="#" ><FaFacebookF size={20} /></a>
+            <a href="#" ><FaInstagram size={20} /></a>
+            <a href="#" ><FaLinkedinIn size={20} /></a>
           </div>
         </div>
-
-        {/* More Info */}
-
-
-// ... inside your component
-
-<div>
-  <h3 className="font-semibold mb-4">More Info</h3>
-  <ul className="space-y-2 text-sm">
-    <li><Link to="/about" className="hover:text-blue-300">About Us</Link></li>
-    <li><Link to="/departments" className="hover:text-blue-300">Departments</Link></li>
-    <li><Link to="/services" className="hover:text-blue-300">Services</Link></li>
-    <li><Link to="/news" className="hover:text-blue-300">News</Link></li>
-  </ul>
-</div>
-
-        {/* Quick Contact */}
-        <div>
-          <h3 className="font-semibold mb-4">Quick Contact</h3>
-          <ul className="space-y-3 text-sm text-gray-300">
-            <li className="flex items-center gap-2"><Clock size={16} /> Mon – Fri: 8:00 am – 6:00 pm</li>
-            <li className="flex items-center gap-2"><MapPin size={16} /> 1234 N Maple Grove Rd<br />Boise, ID 83704</li>
-            <li className="flex items-center gap-2"><Phone size={16} /> +1 212 425 8617</li>
-            <li className="flex items-center gap-2"><Mail size={16} /> information@office.com</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Newsletter */}
-      <div className="max-w-7xl mx-auto pt-10 pb-16">
-        <h3 className="text-xl font-semibold mb-2">Subscribe Our Newsletter</h3>
-        <p className="text-sm text-gray-300 mb-4">Subscribe now to receive the latest updates and news.</p>
-        <form className="flex flex-col sm:flex-row gap-4">
-          <input
-            type="email"
-            placeholder="Your email"
-            className="w-full sm:w-auto flex-1 px-4 py-3 rounded text-black"
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-semibold"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    </footer>
+      </motion.div>
+    </div>
   );
 };
 

@@ -1,8 +1,7 @@
 // src/components/HeroSection.jsx
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 import { Play, ArrowRight, ChevronDown } from 'lucide-react';
-import { pulseVariants, orbitalVariants, heroScale, heroRotate } from '../../../utils/framerVariants';
+import { pulseVariants, orbitalVariants } from '../../../utils/framerVariants';
 
 const HeroSection = ({ scrollToPortfolio, scrollY }) => { // Accept scrollY as prop
     // Define scroll-linked MotionValues directly using useTransform on the received scrollY
