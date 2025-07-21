@@ -18,8 +18,7 @@ function Home (){
         <div>
           <VideoSection
         videoSrc= {video}
-         overlayTitle="Discover Local Services and Community News"
-        overlaySubtitle="Find information about services, events, and resources available to residents and visitors alike."
+        
       />
      <ServiceGrid/>
       <CommunityShowcase/>

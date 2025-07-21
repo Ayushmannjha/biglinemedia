@@ -1,11 +1,25 @@
+import { useState } from "react"
+import ServiceSelector from "../../components/organisms/contact/ServiceSelector"
+import ContactFormsSection from "../../components/organisms/contact/ContactFormsSection"
+import ContactDetails from "../../components/organisms/contact/ContactDetails"
+import { services, serviceConfigs } from "../../assets/data/contact/Contacts.js"
+
 function JoinOurHand(params) {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold mb-4">Join Our Hand</h1>
-            <p className="text-lg text-gray-700">We are always looking for passionate individuals to join our team.</p>
-            <p className="text-lg text-gray-700">If you are interested, please contact us.</p>
-        </div>
-    );  
+
+  const [activeService, setActiveService] = useState('general');
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+
+      <ServiceSelector services={services} activeService={activeService} setActiveService={setActiveService} />
+
+      {/* Contact Forms Section Component */}
+      <ContactFormsSection activeService={activeService} serviceConfigs={serviceConfigs} />
+
+      {/* Contact Details Component */}
+      <ContactDetails />
+
+    </div>
+  );
 }
 
 export default JoinOurHand;

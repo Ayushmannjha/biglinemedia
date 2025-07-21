@@ -1,9 +1,9 @@
-import image1 from "../../../assets/images/background.png";
+import image1 from "../../../assets/images/background.webp";
 import image2 from "../../../assets/images/election3.png";
-import image3 from "../../../assets/images/social3.png";
+import image3 from "../../../assets/images/social3.webp";
 import image5 from "../../../assets/images/webimage.png";
-import image4 from "../../../assets/images/video5.png";
-import image6 from "../../../assets/images/election6.png";
+import image4 from "../../../assets/images/video5.webp";
+import image6 from "../../../assets/images/election6.webp";
 export const successStoriesData = [
   {
     id: 1,

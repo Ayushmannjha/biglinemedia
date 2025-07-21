@@ -1,7 +1,7 @@
-import image1 from "../../../assets/images/election.png";
-import image2 from "../../../assets/images/codespace1.png";
-import image3 from "../../../assets/images/social1.png";
-import image4 from "../../../assets/images/videoproduction1.png";
+import image1 from "../../../assets/images/election.webp";
+import image2 from "../../../assets/images/codespace.webp";
+import image3 from "../../../assets/images/social1.webp";
+import image4 from "../../../assets/images/videoproduction1.webp";
 
  
 export const attractions = [

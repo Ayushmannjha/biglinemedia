@@ -1,8 +1,8 @@
 
-import codesspace from "../../../assets/images/codesspace.png";
-import election1 from "../../../assets/images/election1.png";
-import social from "../../../assets/images/social.png";
-import videop from "../../../assets/images/videoprod.png";
+import codesspace from "../../../assets/images/codespace.webp";
+import election1 from "../../../assets/images/election1.webp";
+import social from "../../../assets/images/social.webp";
+import videop from "../../../assets/images/videoprod.webp";
 
 export const photos = [
   {

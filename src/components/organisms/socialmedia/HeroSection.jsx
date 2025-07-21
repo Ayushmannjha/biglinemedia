@@ -1,4 +1,3 @@
-import React from 'react';
 import { Zap, Rocket, ArrowRight, Eye, ChevronDown } from 'lucide-react';
 import { heroStats, socialPlatforms } from '../../../assets/data/ScoialMediaData';
 import StatCard from './StatCard'; // New sub-component
