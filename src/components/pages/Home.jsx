@@ -6,7 +6,7 @@ import CityHighlights from "../organisms/ CityHighlights"
 import Testimonials from "../organisms/Testimonials"
 import FaqSection from "../organisms/FaqSection"
 import SuccessStories from "../organisms/SuccessStories"    
-import ElectionPage from "./services/electionmangement/ElectionPage"
+//import ElectionPage from "./services/electionmangement/ElectionPage"
 
 
 
