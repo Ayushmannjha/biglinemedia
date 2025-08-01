@@ -1,5 +1,4 @@
 // src/components/molecules/TestimonialCard.jsx
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const TestimonialCard = ({ name, position, organization, quote, image, rating, gradient }) => {

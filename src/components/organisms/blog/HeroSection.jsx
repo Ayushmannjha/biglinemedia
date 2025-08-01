@@ -1,4 +1,3 @@
-import React from 'react';
 import { Zap, Target, BarChart3, Users, Award, Globe, Search ,ArrowRight,Eye,} from 'lucide-react'
 import FadeInAnimation from './FadeInAnimation';
 

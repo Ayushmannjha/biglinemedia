@@ -9,10 +9,11 @@
 @font-face {
   font-family: 'MontserratFallback';
   src: local('Arial');
-  size-adjust: 95.5%;
-  ascent-override: 90%;
-  descent-override: 22%;
-  line-gap-override: 10%;
+  size-adjust: 97.5%;
+  ascent-override: 93%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+  font-display: swap;
 }
 
 /* --- STEP 2: Define the Self-Hosted Web Fonts --- */
@@ -41,6 +42,22 @@
 /* --- STEP 3: Apply the Font Stack to the Body --- */
 body {
   font-family: 'Montserrat', 'MontserratFallback', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+/* Prevent layout shifts due to font loading */
+html {
+  font-synthesis: none;
+  text-size-adjust: 100%;
+}
+
+/* Ensure consistent text sizing */
+*, *::before, *::after {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* --- Animation Properties and Keyframes --- */
@@ -82,4 +99,40 @@ body {
 @keyframes slideInBottom {
   0% { opacity: 0; transform: translateY(50px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout Stability Classes */
+.stable-layout {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+  min-height: 500px;
+  contain: layout size;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+.stable-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+  content-visibility: auto;
+}
+
+.flex-stable {
+  display: flex;
+  min-height: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Prevent layout shifts in flex containers */
+.items-stable {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  min-height: 0;
+  height: auto;
 }

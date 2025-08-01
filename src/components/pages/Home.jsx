@@ -6,7 +6,7 @@ import CityHighlights from "../organisms/ CityHighlights"
 import Testimonials from "../organisms/Testimonials"
 import FaqSection from "../organisms/FaqSection"
 import SuccessStories from "../organisms/SuccessStories"    
-import ElectionPage from "./services/electionmangement/ElectionPage"
+
 
 
 
@@ -17,7 +17,7 @@ function Home (){
     return(
         <div>
           <VideoSection
-        videoSrc= {video}
+        video= {video}
         
       />
      <ServiceGrid/>

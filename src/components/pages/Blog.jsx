@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDebounce } from '../../hooks/blogs/useDebounce';
 import { useLocalStorage } from '../../hooks/blogs/useLocalStorage';
-import { blogAnalysesData, categories, focusAreas } from '../../assets/data/blogdata/blogData.js';
-
+import { blogAnalysesData, categories, focusAreas } from '../../assets/data/blogdata/blogData.js'
 
 import HeroSection from '../../components/organisms/blog/HeroSection';
 import FilterSection from '../../components/filters/FilterSection';
