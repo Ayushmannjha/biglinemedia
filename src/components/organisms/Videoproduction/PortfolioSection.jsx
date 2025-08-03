@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import Modal from './Modal'; // Import the new Modal component
 import { containerVariants, cardVariants, pulseVariants } from '../../../utils/framerVariants';
+import image1 from "../../../assets/images/image1.png"; // Import the image for the first portfolio item
 
 // Dummy data for portfolio items (same as before)
 const portfolioItems = [
