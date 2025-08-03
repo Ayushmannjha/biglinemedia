@@ -1,7 +1,7 @@
 import React from 'react';
 
 const VideoSection = ({
-  videoSrc,
+  video,
   overlayTitle,
   overlaySubtitle,
   children,
@@ -12,7 +12,7 @@ const VideoSection = ({
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
-          src={videoSrc}
+          src={video}
           autoPlay
           loop
           muted

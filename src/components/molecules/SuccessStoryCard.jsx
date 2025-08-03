@@ -29,7 +29,7 @@ const SuccessStoryCard = ({
       viewport={{ once: true }}
       whileHover={{ y: -8, scale: 1.02 }}
       className={`group relative ${story.bgColor} rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer ${featuredClass} ${compactClass}`}
-      onClick={() => onLearnMore(story)}
+      
     >
       {/* Background Image */}
       <div className="absolute inset-0">

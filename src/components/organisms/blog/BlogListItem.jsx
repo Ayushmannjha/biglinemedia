@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Calendar, Eye, MessageCircle, ArrowRight, Award, Heart, Bookmark, Clock } from 'lucide-react';
+import { Star, Eye, MessageCircle, ArrowRight, Award, Heart, Bookmark, Clock } from 'lucide-react';
 import FadeInAnimation from './FadeInAnimation'; // Adjust the import path as necessary
 
 const BlogListItem = ({ blog, isFavorite, isBookmarked, toggleFavorite, toggleBookmark }) => (
@@ -11,11 +11,7 @@ const BlogListItem = ({ blog, isFavorite, isBookmarked, toggleFavorite, toggleBo
           alt={blog.name}
           className="w-full h-full object-cover"
         />
-        {blog.premium && (
-          <span className="absolute top-2 left-2 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1">
-            <Award size={12} /> Premium
-          </span>
-        )}
+        
       </div>
       <div className="flex-grow">
         <div className="flex items-center justify-between mb-2">
@@ -45,26 +41,7 @@ const BlogListItem = ({ blog, isFavorite, isBookmarked, toggleFavorite, toggleBo
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between text-sm text-gray-600">
-          <div className="flex items-center space-x-3">
-            <span className="flex items-center text-blue-600 font-semibold">
-              <Star size={14} fill="currentColor" className="mr-1" /> {blog.rating}
-            </span>
-            <span className="flex items-center">
-              <Eye size={14} className="mr-1" /> {blog.views}
-            </span>
-            <span className="flex items-center">
-              <MessageCircle size={14} className="mr-1" /> {blog.comments}
-            </span>
-             <span className="flex items-center">
-              <Clock size={14} className="mr-1" /> {blog.readTime} min read
-            </span>
-          </div>
-          <a href={`/blog/${blog.id}`} className="text-blue-600 hover:text-blue-700 font-medium flex items-center group">
-            View Details
-            <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
+        
       </div>
     </div>
   </FadeInAnimation>
