@@ -141,24 +141,24 @@ export const testimonialsData = [
     name: "Sarah Chen",
     title: "CMO, InnovateTech",
     quote: "Our social media was stagnant. After partnering with them, our engagement skyrocketed, and we saw a direct increase in qualified leads. Their AI insights are truly a game-changer!",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg"
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b830?w=150&h=150&fit=crop&crop=face&auto=format"
   },
   {
     name: "Mark Davis",
     title: "Founder, GreenEats",
     quote: "The team helped us navigate a potential PR crisis with incredible speed and professionalism. Our brand reputation was not only protected but strengthened. Highly recommend!",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format"
   },
   {
     name: "Emily White",
     title: "Content Director, StyleFlow",
     quote: "Their content creation process is unbelievably efficient. We're constantly trending and our audience loves the interactive campaigns they devise. It's transformed our digital presence.",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format"
   },
   {
     name: "David Lee",
     title: "CEO, QuantumLeap",
     quote: "We've worked with many agencies, but none have delivered the level of precision targeting and ROI that this team has. Our ad spend is now truly optimized, and we're seeing real growth.",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format"
   },
 ];

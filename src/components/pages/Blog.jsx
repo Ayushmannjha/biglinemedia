@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDebounce } from '../../hooks/blogs/useDebounce';
 import { useLocalStorage } from '../../hooks/blogs/useLocalStorage';
-import { blogAnalysesData, categories, focusAreas } from '../../assets/data/blogdata/blogData.js'
+import { categories, focusAreas } from '../../assets/data/blogdata/blogData.js';
+import { fetchMediumBlogs, getCachedBlogs, cacheBlogs, isCacheFresh } from '../../mediumService';
+
 
 import HeroSection from '../../components/organisms/blog/HeroSection';
 import FilterSection from '../../components/filters/FilterSection';
 import BlogCard from '../../components/organisms/blog/BlogCard';
 import BlogListItem from '../../components/organisms/blog/BlogListItem';
 
-import { Info } from 'lucide-react'; // For the no blogs found message
+import { Info, Loader2, AlertCircle, RefreshCw } from 'lucide-react'; // For the no blogs found message
 
 const Blog = () => {
   // State Management
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     category: 'all',
     focus: 'all',
@@ -33,9 +38,56 @@ const Blog = () => {
   const [favorites, setFavorites] = useLocalStorage('blog-favorites', []);
   const [bookmarks, setBookmarks] = useLocalStorage('blog-bookmarks', []);
 
+  // Fetch Medium blogs on component mount
+  useEffect(() => {
+    const loadBlogs = async () => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        // Check if we have fresh cached data
+        if (isCacheFresh()) {
+          const cachedBlogs = getCachedBlogs();
+          if (cachedBlogs.length > 0) {
+            setBlogs(cachedBlogs);
+            setLoading(false);
+            return;
+          }
+        }
+        
+        // Fetch fresh data from Medium
+        const mediumBlogs = await fetchMediumBlogs();
+        
+        if (mediumBlogs.length > 0) {
+          setBlogs(mediumBlogs);
+          cacheBlogs(mediumBlogs);
+        } else {
+          // Fallback to cached data if available
+          const cachedBlogs = getCachedBlogs();
+          setBlogs(cachedBlogs);
+          
+          if (cachedBlogs.length === 0) {
+            setError('No blogs available. Please check your internet connection.');
+          }
+        }
+      } catch (err) {
+        console.error('Error loading blogs:', err);
+        setError('Failed to load blogs. Showing cached content if available.');
+        
+        // Fallback to cached data
+        const cachedBlogs = getCachedBlogs();
+        setBlogs(cachedBlogs);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadBlogs();
+  }, []);
+
   // Computed Values
   const filteredBlogs = useMemo(() => {
-    return blogAnalysesData.filter(blog => {
+    return blogs.filter(blog => {
       const matchesCategory = filters.category === 'all' ||
         blog.category.toLowerCase() === filters.category;
 
@@ -74,7 +126,7 @@ const Blog = () => {
           return new Date(b.date) - new Date(a.date);
       }
     });
-  }, [filters, debouncedSearch]);
+  }, [blogs, filters, debouncedSearch]);
 
   // Event Handlers passed down to children
   const handleFilterChange = useCallback((key, value) => {
@@ -97,6 +149,23 @@ const Blog = () => {
     );
   }, [setBookmarks]);
 
+  const handleRefresh = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const mediumBlogs = await fetchMediumBlogs();
+      if (mediumBlogs.length > 0) {
+        setBlogs(mediumBlogs);
+        cacheBlogs(mediumBlogs);
+      }
+    } catch (err) {
+      setError('Failed to refresh blogs');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased">
     
@@ -115,13 +184,36 @@ const Blog = () => {
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Insights
+                Latest from Medium
               </span>{' '}
               ({filteredBlogs.length})
             </h2>
+            <button
+              onClick={handleRefresh}
+              disabled={loading}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              Refresh
+            </button>
           </div>
 
-          {filteredBlogs.length === 0 ? (
+          {error && (
+            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-2 text-yellow-800">
+                <AlertCircle className="w-5 h-5" />
+                <span>{error}</span>
+              </div>
+            </div>
+          )}
+
+          {loading ? (
+            <div className="text-center py-20 text-gray-500">
+              <Loader2 size={48} className="mx-auto mb-4 animate-spin" />
+              <h2 className="text-2xl font-semibold mb-2">Loading latest blogs...</h2>
+              <p>Fetching content from Medium</p>
+            </div>
+          ) : filteredBlogs.length === 0 ? (
             <div className="text-center py-20 text-gray-500">
               <Info size={48} className="mx-auto mb-4" />
               <h2 className="text-2xl font-semibold mb-2">No blogs found matching your criteria.</h2>

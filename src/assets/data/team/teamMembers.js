@@ -1,14 +1,17 @@
 // src/assets/data/team/teamMembers.js
-import  Aashikant from "../../../assets/images/Aashikant.webp"
-import  ceo from "../../../assets/images/Chandra vrat deo.webp"
-import  Abhisek  from "../../../assets/images/Abhisek.webp"
-import  Harsh from "../../../assets/images/Harsh.webp"
+import Aashikant from "../../images/Aashikant.webp"
+import Abhisek from "../../images/Abhisek.webp"
+import Harsh from "../../images/Harsh.webp"
+import ceoImage from"../../images/Chandra.webp"
+
+// Use a placeholder for the problematic image
+ // Temporary placeholder
 export const teamMembers = [
   {
     id: 1,
     name: "Chandra vrat deo",
     title: "Lead Campaign Strategist AND CEO",
-    photo: ceo, // Using picsum.photos for reliability
+    photo: ceoImage, // Using string path for image with spaces
     cardBg: "bg-gradient-to-br from-blue-400 to-teal-500",
     primarySpecializations: ["Election Strategy", "Digital Advertising"],
     bio: "Alice is a seasoned strategist with over 15 years of experience in political campaigns and digital marketing. She excels at crafting compelling narratives and driving impactful online engagement.",
@@ -36,7 +39,7 @@ export const teamMembers = [
     id: 2,
     name: "Aashikant kumar",
     title: "Head of Web Development",
-    photo:Aashikant,
+    photo: "https://drive.google.com/uc?export=view&id=1MdFYKHhL0MwCsoV8lDqpkm8TQ1PxUAqu",
     cardBg: "bg-gradient-to-br from-green-400 to-lime-500",
     primarySpecializations: ["Full-Stack Development", "UI/UX Design"],
     bio: "Bob leads our web development team, bringing robust technical solutions to life. He ensures our client's digital presence is not only functional but also highly engaging and user-friendly.",

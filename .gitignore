@@ -1,20 +1,203 @@
-# Created by https://www.toptal.com/developers/gitignore/api/react
-# Edit at https://www.toptal.com/developers/gitignore?templates=react
+# ================================================================================================
+# SECURITY CRITICAL - NEVER COMMIT THESE FILES
+# ================================================================================================
 
-### react ###
-.DS_*
+# Environment Variables (CONTAINS SENSITIVE API KEYS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
+
+# API Keys and Secrets
+*.key
+*.pem
+*.p12
+*.p8
+secrets/
+config/secrets/
+
+# ================================================================================================
+# NODE.JS / REACT / VITE
+# ================================================================================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+.output/
+.nuxt/
+.next/
+
+# Vite
+.vite/
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ================================================================================================
+# DEVELOPMENT & EDITOR FILES
+# ================================================================================================
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ================================================================================================
+# LOGS AND DEBUGGING
+# ================================================================================================
+
+# Logs
+logs/
 *.log
-logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# ================================================================================================
+# TEMPORARY AND CACHE FILES
+# ================================================================================================
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ================================================================================================
+# BACKUP AND ARCHIVE FILES
+# ================================================================================================
+
+# Backup files
 **/*.backup.*
 **/*.back.*
+*.bak
+*.swp
+*.tmp
 
-node_modules
-bower_components
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
-*.sublime*
+# ================================================================================================
+# MEDIA AND DESIGN FILES (OPTIONAL - LARGE FILES)
+# ================================================================================================
 
-psd
-thumb
-sketch
+# Uncomment if you have large design files that shouldn't be in git
+# *.psd
+# *.ai
+# *.sketch
+# *.fig
+# *.xd
 
-# End of https://www.toptal.com/developers/gitignore/api/react
+# Large video files (optional)
+# *.mp4
+# *.avi
+# *.mov
+# *.mkv
+
+# ================================================================================================
+# PROJECT SPECIFIC
+# ================================================================================================
+
+# Local configuration files
+config/local.js
+config/local.json
+local.config.js
+
+# Generated documentation
+docs/generated/
+
+# Test results
+test-results/
+playwright-report/
+coverage/
+
+# ================================================================================================
+# DEPLOYMENT AND CI/CD
+# ================================================================================================
+
+# Deployment keys (if using)
+deploy_key
+deploy_key.pub
+
+# Docker
+.dockerignore
+
+# Terraform (if using)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ================================================================================================
+# NOTES FOR DEVELOPERS
+# ================================================================================================
+# 
+# CRITICAL SECURITY RULES:
+# 1. NEVER commit .env files - they contain API keys
+# 2. NEVER commit node_modules - too large and not needed
+# 3. NEVER commit build artifacts - generated files
+# 4. NEVER commit IDE-specific files - personal preferences
+# 5. NEVER commit logs or temporary files
+#
+# ALWAYS CHECK: Run 'git status' before committing to ensure
+# no sensitive files are being added accidentally
+#
+# ================================================================================================

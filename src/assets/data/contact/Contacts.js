@@ -37,7 +37,7 @@ const serviceConfigs = {
     'election-campaigning': {
       title: 'Plan Your Winning Campaign',
       responseTime: 'Our <strong>campaign strategists</strong> aim to respond within 4 business hours for urgent inquiries.',
-      expert: { name: 'Sarah Mitchell', title: 'Lead Campaign Strategist', gradient: 'from-red-500 to-pink-600' },
+      expert: { name: 'Chandra Vrat Deo', title: 'Lead Campaign Strategist', gradient: 'from-red-500 to-pink-600' },
       testimonial: { quote: 'Our voter outreach soared by 20% with their targeted digital strategy!', author: 'Local Candidate, 2024', gradient: 'from-purple-600 to-blue-600' },
       fields: [
         { type: 'select', name: 'electionType', label: 'Select Election Type *', options: ['Local', 'State', 'National', 'Other'] },
@@ -47,7 +47,7 @@ const serviceConfigs = {
     'web-development': {
       title: 'Build Your Digital Presence',
       responseTime: 'Our <strong>web developers</strong> will respond within 2 business hours to discuss your project.',
-      expert: { name: 'Alex Chen', title: 'Senior Full-Stack Developer', gradient: 'from-blue-500 to-cyan-600' },
+      expert: { name: 'Chandra Vrat Deo', title: 'Senior Full-Stack Developer', gradient: 'from-blue-500 to-cyan-600' },
       testimonial: { quote: 'They transformed our online presence and doubled our conversion rate!', author: 'Tech Startup CEO, 2024', gradient: 'from-green-600 to-teal-600' },
       fields: [
         { type: 'select', name: 'websiteType', label: 'Type of Website Needed *', options: ['E-commerce', 'Corporate', 'Portfolio', 'Blog', 'Web Application', 'Other'] },
@@ -59,7 +59,7 @@ const serviceConfigs = {
     'social-media': {
       title: 'Amplify Your Social Reach',
       responseTime: 'Our <strong>social media experts</strong> will connect within 6 business hours to strategize your growth.',
-      expert: { name: 'Maya Patel', title: 'Social Media Strategist', gradient: 'from-pink-500 to-rose-600' },
+      expert: { name: 'Chandra Vrat Deo', title: 'Social Media Strategist', gradient: 'from-pink-500 to-rose-600' },
       testimonial: { quote: 'Our engagement increased by 300% in just 3 months!', author: 'Fashion Brand Owner, 2024', gradient: 'from-orange-600 to-red-600' },
       fields: [
         { type: 'text', name: 'companyName', label: 'Company Name (Optional)' },
@@ -69,7 +69,7 @@ const serviceConfigs = {
     'video-production': {
       title: 'Create Compelling Visual Stories',
       responseTime: 'Our <strong>video production team</strong> will reach out within 4 business hours to discuss your vision.',
-      expert: { name: 'David Rodriguez', title: 'Creative Director', gradient: 'from-purple-500 to-indigo-600' },
+      expert: { name: 'Chandra Vrat Deo', title: 'Creative Director', gradient: 'from-purple-500 to-indigo-600' },
       testimonial: { quote: 'The promotional video they created generated 50% more leads!', author: 'Marketing Director, 2024', gradient: 'from-yellow-600 to-orange-600' },
       fields: [
         { type: 'select', name: 'videoType', label: 'Type of Video Needed *', options: ['Promotional', 'Explainer', 'Testimonial', 'Event', 'Corporate', 'Animation', 'Other'] },
@@ -80,7 +80,7 @@ const serviceConfigs = {
     'general': {
       title: 'How Can We Help You?',
       responseTime: 'Our <strong>support team</strong> will respond within 24 hours to address your inquiry.',
-      expert: { name: 'Jennifer Kim', title: 'Client Success Manager', gradient: 'from-teal-500 to-green-600' },
+      expert: { name: 'Chandra Vrat Deo', title: 'Client Success Manager', gradient: 'from-teal-500 to-green-600' },
       testimonial: { quote: 'Exceptional service and attention to detail in every interaction!', author: 'Long-term Client, 2024', gradient: 'from-indigo-600 to-purple-600' },
       fields: [
         { type: 'text', name: 'subject', label: 'Subject *' }

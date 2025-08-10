@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import ExpertSnippet from './ExpertSnippet';
 import MiniTestimonial from './MiniTestimonial';
 import emailjs from '@emailjs/browser'; // Import EmailJS library
+import envConfig from '../../../utils/envConfig'; // Import centralized environment config
 
 const ContactForm = ({ service, serviceConfig, onSuccess }) => {
   const [formData, setFormData] = useState({});
@@ -12,8 +13,15 @@ const ContactForm = ({ service, serviceConfig, onSuccess }) => {
 
   // Initialize EmailJS with your Public Key once when the component mounts
   useEffect(() => {
-    // IMPORTANT: Replace 'YOUR_EMAILJS_PUBLIC_KEY' with your actual Public Key from EmailJS.com
-    emailjs.init('qerOD5mGkKdJCfBhT'); // e.g., 'user_zzzzzzzzzzzzzzzzzzzz'
+    // Validate EmailJS configuration on component mount
+    if (!envConfig.validateEmailJSConfig()) {
+      console.error('EmailJS configuration is incomplete');
+      setError('Email service configuration error');
+      return;
+    }
+    
+    // Initialize EmailJS with the public key from environment config
+    emailjs.init(envConfig.emailjs.publicKey);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -21,9 +29,18 @@ const ContactForm = ({ service, serviceConfig, onSuccess }) => {
     setError(null); // Clear any previous errors
     setIsSubmitting(true); // Disable the submit button
 
-    // IMPORTANT: Replace with your actual Service ID and Template ID from EmailJS.com
-    const serviceId = 'service_480qowx';
-    const templateId = 'template_6wz8k56'; // e.g., 'template_yyyyyy'
+    // Use environment config for EmailJS settings
+    const emailConfig = envConfig.emailjs;
+
+    // Debug: Check if environment variables are loaded
+    if (!emailConfig.serviceId || !emailConfig.templateId) {
+      console.error("Missing EmailJS environment variables:");
+      console.error("Service ID:", emailConfig.serviceId ? "✓" : "✗");
+      console.error("Template ID:", emailConfig.templateId ? "✓" : "✗");
+      setError("EmailJS configuration is missing. Please check environment variables.");
+      setIsSubmitting(false);
+      return;
+    }
 
     // Prepare template parameters. These keys must match the variables in your EmailJS template.
     const templateParams = {
@@ -46,10 +63,20 @@ const ContactForm = ({ service, serviceConfig, onSuccess }) => {
     };
 
     console.log("Template Params being sent:", templateParams); // Essential for debugging!
+    
+    // Debug environment variables (remove in production)
+    if (emailConfig.debugMode) {
+      console.log("EmailJS Config:", envConfig.getMaskedConfig().emailjs);
+    }
 
     try {
-      // Send the email using EmailJS
-      const response = await emailjs.send(serviceId, templateId, templateParams);
+      // Send the email using EmailJS with timeout
+      const response = await Promise.race([
+        emailjs.send(emailConfig.serviceId, emailConfig.templateId, templateParams),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Request timeout')), emailConfig.timeout)
+        )
+      ]);
 
       if (response.status === 200) { // EmailJS sends back a status of 200 on success
         setSubmitted(true);
@@ -69,7 +96,12 @@ const ContactForm = ({ service, serviceConfig, onSuccess }) => {
     } catch (err) {
       // Handle network errors or other unexpected issues during the EmailJS call
       console.error("Network or EmailJS SDK error:", err);
-      setError("An unexpected error occurred while sending your message. Please try again later.");
+      
+      if (err.message === 'Request timeout') {
+        setError("Request timed out. Please check your internet connection and try again.");
+      } else {
+        setError("An unexpected error occurred while sending your message. Please try again later.");
+      }
     } finally {
       setIsSubmitting(false); // Re-enable the submit button
     }

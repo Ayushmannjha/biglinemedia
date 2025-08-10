@@ -149,13 +149,7 @@ const ServicesSection = () => {
                                                     {service.price}
                                                 </motion.p>
 
-                                                <motion.button
-                                                    className={`px-6 py-2 rounded-full bg-gradient-to-r ${service.color} text-white font-semibold text-sm`}
-                                                    whileHover={{ scale: 1.1, x: 5 }}
-                                                    whileTap={{ scale: 0.95 }}
-                                                >
-                                                    Learn More
-                                                </motion.button>
+                                            
                                             </div>
                                         </div>
                                     </div>
