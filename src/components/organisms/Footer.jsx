@@ -2,8 +2,16 @@ import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Rss, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import envConfig from '../../utils/envConfig';
 
 const Footer = () => {
+  // Get social media URLs from environment config
+  const socialLinks = {
+    twitter: envConfig.social.twitter.company,
+    facebook: envConfig.social.facebook.company,
+    instagram: envConfig.social.instagram.company,
+    linkedin: envConfig.social.linkedin.company
+  };
   // Animation variants for Framer Motion
   // We're keeping these for potential 'whileInView' effects if desired,
   // but removing the 'initial="hidden"' from the main container
@@ -65,10 +73,10 @@ const Footer = () => {
           <motion.div variants={itemVariants} initial="visible"> {/* Set initial to 'visible' */}
             <h3 className="text-lg mb-4">Our Services</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/election-campaigns" className="hover:text-blue-400 transition-colors duration-300">Election Campaigns</Link></li>
-              <li><Link to="/video-production" className="hover:text-blue-400 transition-colors duration-300">Video Production</Link></li>
-              <li><Link to="/web-development" className="hover:text-blue-400 transition-colors duration-300">Web Development</Link></li>
-              <li><Link to="/social-media" className="hover:text-blue-400 transition-colors duration-300">Social Media Management</Link></li>
+              <li><Link to="services/election-management" className="hover:text-blue-400 transition-colors duration-300">Election Campaigns</Link></li>
+              <li><Link to="services/video-production" className="hover:text-blue-400 transition-colors duration-300">Video Production</Link></li>
+              <li><Link to="services/web-development" className="hover:text-blue-400 transition-colors duration-300">Web Development</Link></li>
+              <li><Link to="services/social-media" className="hover:text-blue-400 transition-colors duration-300">Social Media Management</Link></li>
             </ul>
           </motion.div>
 
@@ -105,10 +113,42 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} BIGLINEMEDIA. All Rights Reserved.
           </p>
           <div className="flex space-x-4 text-gray-400 hover:text-white transition-colors duration-300">
-            <a href="#"><FaTwitter size={20} /></a>
-            <a href="#" ><FaFacebookF size={20} /></a>
-            <a href="#" ><FaInstagram size={20} /></a>
-            <a href="#" ><FaLinkedinIn size={20} /></a>
+            <a 
+              href={socialLinks.twitter} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-400 transition-colors duration-300"
+              aria-label="Twitter"
+            >
+              <FaTwitter size={20} />
+            </a>
+            <a 
+              href={socialLinks.facebook} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors duration-300"
+              aria-label="Facebook"
+            >
+              <FaFacebookF size={20} />
+            </a>
+            <a 
+              href={socialLinks.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-pink-500 transition-colors duration-300"
+              aria-label="Instagram"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a 
+              href={socialLinks.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-500 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedinIn size={20} />
+            </a>
           </div>
         </div>
       </motion.div>

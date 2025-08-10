@@ -4,55 +4,57 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import Modal from './Modal'; // Import the new Modal component
 import { containerVariants, cardVariants, pulseVariants } from '../../../utils/framerVariants';
+import { getPlaceholderImageUrl, getYouTubeEmbedUrl } from '../../../utils/imageUtils';
+import envConfig from '../../../utils/envConfig';
 import image1 from "../../../assets/images/image1.png"; // Import the image for the first portfolio item
 
-// Dummy data for portfolio items (same as before)
+// Portfolio data using environment-friendly URLs
 const portfolioItems = [
     {
         title: "Startup Explainer: InnovateApp",
         description: "A concise animated explainer that simplified a complex SaaS product for early adopters.",
-        image: image1, // Larger image for modal
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example YouTube embed URL
+        image:getPlaceholderImageUrl(800, 450, "InnovateApp Explainer", "f9a8d4", "ffffff"),
+      
         impact: "Increased user sign-ups by 20% in the first month.",
         color: "from-purple-500 to-pink-500"
     },
     {
         title: "Local Business Promo: The Daily Crumb",
         description: "A vibrant social media reel showcasing a local bakery's unique atmosphere and offerings.",
-        image: "https://placehold.co/800x450/fca5a5/ffffff?text=Daily+Crumb+Promo",
-        videoEmbedUrl: "https://www.instagram.com/reel/DL5HNaQsWVC",
+        image: getPlaceholderImageUrl(800, 450, "Daily Crumb Promo", "fca5a5", "ffffff"),
+      
         impact: "Generated a 15% increase in local foot traffic.",
         color: "from-orange-500 to-red-500"
     },
     {
         title: "Online Course Intro: Digital Mastery",
         description: "Professional intro/outro animations for an online entrepreneur's new course series.",
-        image: "https://placehold.co/800x450/94a3b8/ffffff?text=Digital+Mastery+Intro",
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        image: getPlaceholderImageUrl(800, 450, "Digital Mastery Intro", "94a3b8", "ffffff"),
+       
         impact: "Enhanced course professionalism and viewer retention.",
         color: "from-blue-500 to-cyan-500"
     },
     {
         title: "Product Demo: EcoGadget",
         description: "A clear and engaging demonstration of a new sustainable tech gadget's features.",
-        image: "https://placehold.co/800x450/34d399/ffffff?text=EcoGadget+Demo",
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        image: getPlaceholderImageUrl(800, 450, "EcoGadget Demo", "34d399", "ffffff"),
+        
         impact: "Boosted pre-orders by 10% during launch campaign.",
         color: "from-green-500 to-teal-500"
     },
     {
         title: "Brand Story: Artisan Crafts",
         description: "A short, heartfelt video telling the story behind a local artisan's unique creations.",
-        image: "https://placehold.co/800x450/fcd34d/ffffff?text=Artisan+Story",
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        image: getPlaceholderImageUrl(800, 450, "Artisan Story", "fcd34d", "ffffff"),
+     
         impact: "Increased brand engagement and social media shares.",
         color: "from-yellow-500 to-orange-500"
     },
     {
         title: "Social Media Ad: Fitness Hub",
         description: "Dynamic and energetic short ad designed to drive sign-ups for a new fitness studio.",
-        image: "https://placehold.co/800x450/8b5cf6/ffffff?text=Fitness+Ad",
-        videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        image: getPlaceholderImageUrl(800, 450, "Fitness Ad", "8b5cf6", "ffffff"),
+  
         impact: "Achieved 2x higher click-through rate on social platforms.",
         color: "from-indigo-500 to-purple-500"
     },

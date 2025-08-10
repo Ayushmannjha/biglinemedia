@@ -1,5 +1,6 @@
 // src/components/molecules/TestimonialCard.jsx
 import { motion } from 'framer-motion';
+import OptimizedAvatar from '../common/OptimizedAvatar';
 
 const TestimonialCard = ({ name, position, organization, quote, image, rating, gradient }) => {
   return (
@@ -33,10 +34,12 @@ const TestimonialCard = ({ name, position, organization, quote, image, rating, g
 
         {/* User Info */}
         <div className="flex items-center gap-4">
-          <img
+          <OptimizedAvatar 
             src={image}
             alt={name}
-            className="w-12 h-12 rounded-full border-2 border-white/40"
+            name={name}
+            className="w-12 h-12 border-2 border-white/40"
+            fallbackType="initials"
           />
           <div>
             <div className="font-semibold">{name}</div>
