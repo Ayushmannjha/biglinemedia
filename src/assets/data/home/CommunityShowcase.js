@@ -1,8 +1,8 @@
 
-import codesspace from "../../../assets/images/codespace.webp";
-import election1 from "../../../assets/images/election1.webp";
-import social from "../../../assets/images/social.webp";
-import videop from "../../../assets/images/videoprod.webp";
+const codesspace = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093278/codespace_i8gfob.webp";
+const election1 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755094701/election1_mkub5q.png";
+const social ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093285/social_gbsv9n.webp";
+const videop ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/videoprod_absuit.webp";
 
 export const photos = [
   {

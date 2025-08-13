@@ -28,38 +28,9 @@ const HeroSection = () => (
           </p>
         </FadeInAnimation>
 
-        <FadeInAnimation delay={200}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 group">
-              <Target size={20} />
-              Submit Blog for Analysis
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200 flex items-center justify-center gap-2">
-              <Eye size={20} />
-              Explore Analyses
-            </button>
-          </div>
-        </FadeInAnimation>
+        
         {/* Stats */}
-        <FadeInAnimation delay={400}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            {[
-              { number: '500+', label: 'Blogs Analyzed', icon: <Globe size={24} /> },
-              { number: '50K+', label: 'Insights Generated', icon: <BarChart3 size={24} /> },
-              { number: '10K+', label: 'Active Users', icon: <Users size={24} /> },
-              { number: '95%', label: 'Accuracy Rate', icon: <Award size={24} /> }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center text-blue-600 mx-auto mb-3">
-                  {stat.icon}
-                </div>
-                <div className="text-2xl font-bold text-gray-900">{stat.number}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </FadeInAnimation>
+      
       </div>
       {/* Process Steps */}
       <FadeInAnimation delay={600}>

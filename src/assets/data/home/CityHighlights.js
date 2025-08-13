@@ -1,9 +1,8 @@
-import image1 from "../../../assets/images/election.webp";
-import image2 from "../../../assets/images/codespace.webp";
-import image3 from "../../../assets/images/social1.webp";
-import image4 from "../../../assets/images/videoproduction1.webp";
+const image1 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093278/election_wgqrwc.webp";
+const image2 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093286/codesspace_yk20wl.png";
+const  image3 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093285/social1_hm6f42.png";
+const image4 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/videoproduction1_wlqojz.webp";
 
- 
 export const attractions = [
   {
     imageSrc: image1,
