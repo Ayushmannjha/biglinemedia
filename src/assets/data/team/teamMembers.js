@@ -1,8 +1,8 @@
 // src/assets/data/team/teamMembers.js
-import Aashikant from "../../images/Aashikant.webp"
-import Abhisek from "../../images/Abhisek.webp"
-import Harsh from "../../images/Harsh.webp"
-import ceoImage from"../../images/Chandra.webp"
+const Aashikant = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093283/Aashikant_pdstas.webp"
+const Abhisek = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/Abhisek_ltpz8q.webp"
+const Harsh = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/Harsh_ktqcmz.webp"
+const ceoImage ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093284/Chandra_oeosj4.webp"
 
 // Use a placeholder for the problematic image
  // Temporary placeholder
@@ -39,7 +39,7 @@ export const teamMembers = [
     id: 2,
     name: "Aashikant kumar",
     title: "Head of Web Development",
-    photo: "https://drive.google.com/uc?export=view&id=1MdFYKHhL0MwCsoV8lDqpkm8TQ1PxUAqu",
+    photo: Aashikant, // Using string path for image with spaces
     cardBg: "bg-gradient-to-br from-green-400 to-lime-500",
     primarySpecializations: ["Full-Stack Development", "UI/UX Design"],
     bio: "Bob leads our web development team, bringing robust technical solutions to life. He ensures our client's digital presence is not only functional but also highly engaging and user-friendly.",

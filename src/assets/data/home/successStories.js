@@ -1,9 +1,9 @@
-import image1 from "../../../assets/images/background.webp";
-import image2 from "../../../assets/images/election3.png";
-import image3 from "../../../assets/images/social3.webp";
-import image5 from "../../../assets/images/webimage.png";
-import image4 from "../../../assets/images/video5.webp";
-import image6 from "../../../assets/images/election6.webp";
+
+const  image2 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093280/election3_o51qh9.webp";
+const image3 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093284/social3_dy54no.webp";
+const image5 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093279/webimage_zpidxs.webp";
+const image4 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093283/video5_hn4jqd.webp";
+const image6 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093283/video1_syn1p8.webp";
 export const successStoriesData = [
   {
     id: 1,

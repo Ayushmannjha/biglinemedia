@@ -1,5 +1,5 @@
 import VideoSection from "../molecules/VideoSection"
-import video from "../../assets/video/video1.mp4"
+const video ="https://res.cloudinary.com/dcklr65ur/video/upload/v1755095148/video2_vf2kpu.mp4"
 import ServiceGrid from "../organisms/ServicesGrid"
 import CommunityShowcase from "../organisms/CommunityShowcase"
 import CityHighlights from "../organisms/ CityHighlights"

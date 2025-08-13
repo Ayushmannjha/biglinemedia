@@ -1,5 +1,5 @@
- import image1 from "../../assets/images/reviewimg/principal_gj_college.jpg"
-  import image2 from "../../assets/images/reviewimg/RameshwarMahto.jpeg"
+ const image1 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093319/principal_gj_college_of3bwz.jpg"
+const  image2 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093318/RameshwarMahto_yvc0xh.jpg"
  export const testimonialData = [
   {
     name: 'Prof. Dr. Bikash Krishna Singh',
