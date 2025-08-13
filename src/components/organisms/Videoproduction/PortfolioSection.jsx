@@ -4,9 +4,8 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import Modal from './Modal'; // Import the new Modal component
 import { containerVariants, cardVariants, pulseVariants } from '../../../utils/framerVariants';
-import { getPlaceholderImageUrl, getYouTubeEmbedUrl } from '../../../utils/imageUtils';
-import envConfig from '../../../utils/envConfig';
-import image1 from "../../../assets/images/image1.png"; // Import the image for the first portfolio item
+import { getPlaceholderImageUrl } from '../../../utils/imageUtils';
+
 
 // Portfolio data using environment-friendly URLs
 const portfolioItems = [
