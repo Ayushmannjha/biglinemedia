@@ -38,7 +38,7 @@ export const teamMembers = [
   {
     id: 2,
     name: "Aashikant kumar",
-    title: "Head of Web Development",
+    title: "Web Development",
     photo: Aashikant, // Using string path for image with spaces
     cardBg: "bg-gradient-to-br from-green-400 to-lime-500",
     primarySpecializations: ["Full-Stack Development", "UI/UX Design"],

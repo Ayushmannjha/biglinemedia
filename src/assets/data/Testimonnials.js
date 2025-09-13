@@ -1,5 +1,5 @@
  const image1 = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093319/principal_gj_college_of3bwz.jpg"
-const  image2 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093318/RameshwarMahto_yvc0xh.jpg"
+const  image2 ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093319/Tarkishore_Prasad_mrjequ.jpg"
  export const testimonialData = [
   {
     name: 'Prof. Dr. Bikash Krishna Singh',
