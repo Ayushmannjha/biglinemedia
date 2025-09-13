@@ -32,20 +32,56 @@ const TestimonialCard = ({ name, position, organization, quote, image, rating, g
           ))}
         </div>
 
-        {/* User Info */}
-        <div className="flex items-center gap-4">
-          <OptimizedAvatar 
-            src={image}
-            alt={name}
-            name={name}
-            className="w-12 h-12 border-2 border-white/40"
-            fallbackType="initials"
-          />
-          <div>
-            <div className="font-semibold">{name}</div>
-            <div className="text-sm text-white/70">
-              {position} • {organization}
+        {/* User Info - Enhanced Responsive Version */}
+        <div className="flex items-start gap-3 md:gap-4">
+          <div className="relative flex-shrink-0">
+            {/* Main Avatar */}
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/40 shadow-lg">
+              {/* Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500" />
+              
+              {/* Image */}
+              {image && (
+                <img
+                  src={image}
+                  alt={name}
+                  className="absolute inset-0 w-full h-full object-cover object-center z-10 transition-all duration-300 hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.style.opacity = '0';
+                  }}
+                />
+              )}
+              
+              {/* Initials Fallback */}
+              <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg z-5">
+                {name?.split(' ').map(word => word.charAt(0)).join('').substring(0, 2).toUpperCase() || '?'}
+              </div>
+              
+              {/* Overlay Effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-20" />
             </div>
+            
+            {/* Verified Badge */}
+            <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 md:w-6 md:h-6 bg-green-500 rounded-full border-2 border-white shadow-md flex items-center justify-center">
+              <svg className="w-2.5 h-2.5 md:w-3 md:h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          
+          <div className="flex-1 min-w-0 pt-1">
+            <h4 className="font-semibold text-white truncate text-base md:text-lg leading-tight">
+              {name}
+            </h4>
+            <p className="text-sm md:text-base text-white/80 truncate font-medium mt-0.5">
+              {position}
+            </p>
+            {organization && (
+              <p className="text-xs md:text-sm text-white/60 truncate mt-1">
+                @ {organization}
+              </p>
+            )}
           </div>
         </div>
       </div>
