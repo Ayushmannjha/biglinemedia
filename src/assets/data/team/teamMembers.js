@@ -1,7 +1,7 @@
 // src/assets/data/team/teamMembers.js
 const Aashikant = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093283/Aashikant_pdstas.webp"
 const Abhisek = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/Abhisek_ltpz8q.webp"
-const Harsh = "https://res.cloudinary.com/dcklr65ur/image/upload/v1755093282/Harsh_ktqcmz.webp"
+
 const ceoImage ="https://res.cloudinary.com/dcklr65ur/image/upload/v1755093284/Chandra_oeosj4.webp"
 
 // Use a placeholder for the problematic image
@@ -63,34 +63,7 @@ export const teamMembers = [
     },
     linkedIn: "https://www.linkedin.com/in/bobwilliams",
   },
-  {
-    id: 3,
-    name: "Harsh kumar",
-    title: "Creative Director - Video",
-    photo: Harsh,
-    cardBg: "bg-gradient-to-br from-purple-400 to-pink-500",
-    primarySpecializations: ["Content Creation", "Post-Production"],
-    bio: "Catherine is our visionary Creative Director, specializing in impactful video content. She transforms ideas into visually stunning narratives that resonate with audiences.",
-    achievements: [
-      "Directed 3 award-winning commercial campaigns",
-      "Produced 500+ hours of video content",
-    ],
-    expertiseTags: [
-      "Adobe Premiere Pro",
-      "After Effects",
-      "Storytelling",
-    ],
-    industry: {
-      yearsInIndustry: 10,
-      yearsAtDM: 7,
-      skills: {
-        "Creativity": 99,
-        "Direction": 92,
-        "Editing": 90,
-      },
-    },
-    linkedIn: "https://www.linkedin.com/in/catherinelee",
-  },
+  
   {
     id: 4,
     name: "Abhisek kumar",
