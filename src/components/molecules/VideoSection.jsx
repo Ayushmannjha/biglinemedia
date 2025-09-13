@@ -12,11 +12,18 @@ const VideoSection = ({
   buttonText = "Get In Touch",
   buttonVariant = "primary" // primary, secondary, outline
 }) => {
-  const buttonVariants = {
-    primary: "bg-gradient-to-r text-black hover:from-blue-100 hover:to-purple-100 shadow-xl hover:shadow-2xl",
-    secondary: "bg-white/20 backdrop-blur-md text-white border border-white/30 hover:bg-white/30",
-    outline: "border-2 border-white text-white hover:bg-white hover:text-gray-900"
-  };
+const buttonVariants = {
+  primary:
+    "bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition transform duration-300",
+
+  secondary:
+    "bg-black/50 text-white border border-white/40 backdrop-blur-sm font-medium px-6 py-3 rounded-lg shadow-md hover:bg-black/70 hover:shadow-lg hover:scale-105 transition duration-300",
+
+  outline:
+    "border-2 border-white text-white bg-black/40 backdrop-blur-sm font-medium px-6 py-3 rounded-lg shadow-md hover:bg-white hover:text-black hover:shadow-lg hover:scale-105 transition duration-300"
+};
+
+
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
